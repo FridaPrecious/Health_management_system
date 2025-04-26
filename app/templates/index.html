@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Program Dashboard</title>
+
+    <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Link to SweetAlert2 from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Health Information System</h1>
+        </header>
+
+        <section class="form-section">
+            <h2>Create Program</h2>
+            <form id="createProgramForm">
+                <label for="programName">Program Name</label>
+                <input type="text" id="programName" name="programName" required>
+                <button type="submit">Create Program</button>
+            </form>
+
+            <h2>Register Client</h2>
+            <form id="registerClientForm">
+                <label for="clientId">Client ID</label>
+                <input type="text" id="clientId" name="clientId" required>
+                <label for="clientName">Client Name</label>
+                <input type="text" id="clientName" name="clientName" required>
+                <label for="clientAge">Client Age</label>
+                <input type="number" id="clientAge" name="clientAge" required>
+                <button type="submit">Register Client</button>
+            </form>
+
+            <h2>Enroll Client in Program</h2>
+            <form id="enrollClientForm">
+                <label for="clientIdEnroll">Client ID</label>
+                <input type="text" id="clientIdEnroll" name="clientIdEnroll" required>
+                <label for="programNameEnroll">Program Name</label>
+                <input type="text" id="programNameEnroll" name="programNameEnroll" required>
+                <button type="submit">Enroll Client</button>
+            </form>
+        </section>
+
+        <section class="client-info">
+            <h2>View Client Profile</h2>
+            <form id="viewClientForm">
+                <label for="viewClientId">Client ID</label>
+                <input type="text" id="viewClientId" name="viewClientId" required>
+                <button type="submit">View Profile</button>
+            </form>
+
+            <div id="clientProfile">
+                <p><strong>Client Name:</strong> <span id="clientNameDisplay"></span></p>
+                <p><strong>Age:</strong> <span id="clientAgeDisplay"></span></p>
+                <p><strong>Enrolled Programs:</strong> <span id="clientProgramsDisplay"></span></p>
+            </div>
+
+            <div id="removeClientActions">
+                <button id="deleteClientBtn" style="display:none;">Delete Client</button>
+                <button id="removeFromProgramBtn" style="display:none;">Remove Client from Program</button>
+            </div>
+        </section>
+
+        <section class="program-info">
+            <h2>Available Programs</h2>
+            <ul id="programsList">
+                <!-- List will be dynamically populated -->
+            </ul>
+        </section>
+
+        <!-- Success Alert Box -->
+        <div id="alertBox" class="alert" style="display:none;">
+            Success! The process was completed.
+        </div>
+    </div>
+
+    <!-- Load your scripts at the bottom for faster page loading -->
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>
